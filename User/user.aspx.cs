@@ -167,10 +167,7 @@ namespace WebApplication2
                 {
                     dbcheck.Text = "연결실패!";
                 }
-
             }
-
-
         }
     }
 }

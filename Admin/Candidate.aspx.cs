@@ -12,6 +12,72 @@ namespace DB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            SqlConnection conn = new SqlConnection();
+            SqlCommand sqlComm = new SqlCommand();
+            SqlDataReader sd;
+            string connectionString = "Data Source=10.96.124.87,1433;Initial Catalog=metoo;Persist Security Info=True;User ID=sa;Password=metoo";
+            String query = "select * from Candidate";
+            try
+            {
+                conn.ConnectionString = connectionString;
+
+                conn.Open();
+
+                sqlComm.CommandText = query;
+                sqlComm.Connection = conn;
+                sd = sqlComm.ExecuteReader();
+
+                List<string> name = new List<string>();
+                List<string> imageName = new List<string>();
+                List<string> major = new List<string>();
+                List<string> commitment = new List<string>();
+
+                while (sd.Read())
+                {
+                    name.Add(sd["name"].ToString());
+                    imageName.Add(sd["imageName"].ToString());
+                    major.Add(sd["major"].ToString());
+                    commitment.Add(sd["commitment"].ToString());
+                }
+
+                if (name.Count > 0)
+                {
+                    Label[] n = new Label[name.Count];
+                    Image[] im = new Image[name.Count];
+                    Label[] m = new Label[name.Count];
+                    Label[] com = new Label[name.Count];
+
+                    for (int i = 0; i < name.Count; i++)
+                    {
+
+                        //후보이미지
+                        im[i] = new Image();
+                        im[i].ImageUrl = "\\Models\\images\\" + imageName[i];
+                        //후보자 명
+                        n[i] = new Label();
+                        n[i].Text = name[i] + "<br>";
+                        //후보전공
+                        m[i] = new Label();
+                        m[i].Text = major[i] + "<br>";
+                        //후보 공약
+                        com[i] = new Label();
+                        com[i].Text = commitment[i] + "<br>";
+
+                        info.Controls.Add(im[i]);
+                        info.Controls.Add(n[i]);
+                        info.Controls.Add(m[i]);
+                        info.Controls.Add(com[i]);
+                    }
+                }
+                conn.Close();
+
+
+                dbcheck.Text = "연동 성공";
+            }
+            catch (SqlException ex3)
+            {
+                dbcheck.Text = ex3.Message;
+            }
         }
         void SaveFile(HttpPostedFile file)
         {
@@ -33,8 +99,6 @@ namespace DB
             }
             savePath += fileName;
             img1.SaveAs(savePath);
-
-            imgpath1.Text = fileName;
 
             string connectionString = "Data Source=10.96.124.87,1433;Initial Catalog=metoo;Persist Security Info=True;User ID=sa;Password=metoo";
             try
@@ -66,6 +130,7 @@ namespace DB
             {
                 dbcheck.Text = ex.Message;
             }
+
         }
         protected void candidateBtn_Click(object sender, EventArgs e)
         {
@@ -77,11 +142,6 @@ namespace DB
             {
                 imgcheck.Text = "업로드 하지 못했습니다.";
             }
-        }
-
-        protected void back_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("admin.aspx");
         }
     }
 }

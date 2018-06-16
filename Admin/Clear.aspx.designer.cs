@@ -58,6 +58,15 @@ namespace DB {
         protected global::System.Web.UI.WebControls.Button resultClear;
         
         /// <summary>
+        /// countClear 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button countClear;
+        
+        /// <summary>
         /// Button1 컨트롤입니다.
         /// </summary>
         /// <remarks>
@@ -101,5 +110,14 @@ namespace DB {
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label db4;
+        
+        /// <summary>
+        /// db5 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label db5;
     }
 }

@@ -13,7 +13,8 @@ namespace DB
         {
             try
             {
-                if (Session["id"].ToString().Equals("metoo")) { 
+                if (Session["id"].ToString().Equals("metoo"))
+                {
                     check.Text = Session["id"].ToString() + "님";
                 }
                 else
@@ -21,9 +22,10 @@ namespace DB
                     Response.Redirect("../User/Index.aspx");
                 }
             }
-            catch(Exception e1)
+            catch (Exception e1)  
             {
                 Response.Redirect("../User/Index.aspx");
             }
+        }
     }
 }

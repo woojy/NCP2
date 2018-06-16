@@ -14,12 +14,15 @@
         <asp:Button ID="studentClear" runat="server" Text="인원 데이터 삭제" onclick="studentClear_Click" /><br /><br />
         <asp:Button ID="keyClear" runat="server" Text="암호 데이터 삭제" OnClick="keyClear_Click" /><br /><br />
         <asp:Button ID="resultClear" runat="server" Text="투표결과 데이터 삭제" onclick="resultClear_Click" /><br /><br />
+        <asp:Button ID="countClear" runat="server" Text="학번 카운트 초기화" onclick="countClear_Click" /><br /><br />
+
         <asp:Button ID="Button1" runat="server" Text="뒤로가기" onclick="back_Click"/><br /><br />
     <hr />
         <asp:Label ID="db1" runat="server" Text="db1X"></asp:Label>
         <asp:Label ID="db2" runat="server" Text="db2X"></asp:Label>
         <asp:Label ID="db3" runat="server" Text="db3X"></asp:Label>
         <asp:Label ID="db4" runat="server" Text="db4X"></asp:Label>
+        <asp:Label ID="db5" runat="server" Text="db5X"></asp:Label>
   
 
     </form>
